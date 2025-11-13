@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Gestor_de_inventario_personal_Luengo_Gomez_Alejandro</string>
+    <string name="tvNombre">Nombre de la pertenencia</string>
+    <string name="tvCategoria">Categoría de la pertenencia</string>
+    <string name="tvUnidades">Número de unidades</string>
+    <string name="tvPesoUnidad">Peso por unidad</string>
+    <string name="tvDimensiones">Dimensiones</string>
+    <string name="tvValorPorUnidad">Precio por unidad</string>
+    <string name="fechaCompra">Fecha de la compra: </string>
+    <string name="tvFechaSeleccionada">Seleccionar fecha</string>
+    <string name="cbFragil">Frágil</string>
+    <string name="btnEditar">Editar</string>
+    <string name="btnEliminar">Eliminar</string>
+
 </resources>

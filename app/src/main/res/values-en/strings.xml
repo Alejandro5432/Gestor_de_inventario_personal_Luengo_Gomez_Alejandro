@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Personal_inventory_Manager_Luengo_Gomez_Alejandro</string>
+    <string name="tvNombre">Name of the item</string>
+    <string name="tvCategoria">Category of the item</string>
+    <string name="tvUnidades">Number of items</string>
+    <string name="tvPesoUnidad">Weight per unit</string>
+    <string name="tvDimensiones">Sizes</string>
+    <string name="tvValorPorUnidad">Cost per unit</string>
+    <string name="fechaCompra">Purchase date: </string>
+    <string name="tvFechaSeleccionada">Select a date</string>
+    <string name="cbFragil">Fragile</string>
+    <string name="btnEditar">Edit</string>
+    <string name="btnEliminar">Delete</string>
+</resources>
