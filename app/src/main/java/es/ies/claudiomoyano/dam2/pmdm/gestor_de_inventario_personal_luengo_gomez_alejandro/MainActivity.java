@@ -1,16 +1,29 @@
 package es.ies.claudiomoyano.dam2.pmdm.gestor_de_inventario_personal_luengo_gomez_alejandro;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+    PertenenciaAdapter adapter;
+    List<Pertenencia> listaPertenencias = new ArrayList<>();
+
+    private ActivityResultLauncher<Intent> agregarPertenenciaLauncher;
 
     TextView tvFechSeleccionada;
     int dia, mes, anio;
@@ -21,33 +34,33 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        // tvFechaSeleccionada está en el layout pertenencia_card_layout, por eso da error
-        tvFechSeleccionada = findViewById(R.id.tvFechaSeleccionada);
+        recyclerView = findViewById(R.id.pertenencias_card);
+        adapter = new PertenenciaAdapter(this, listaPertenencias);
 
-        // Muestro un DatePicker cuando se haga clic en el TextView y almaceno ahí la fecha elegida
-        tvFechSeleccionada.setOnClickListener(v-> mostrarDatePicker());
-    }
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
 
-    private void mostrarDatePicker(){
+        Button btnAniadir = findViewById(R.id.btnAniadirPertenencia);
 
-        final Calendar calendario = Calendar.getInstance();
-        anio = calendario.get(Calendar.YEAR);
-        mes = calendario.get(Calendar.MONTH);
-        dia = calendario.get(Calendar.DAY_OF_MONTH);
+        // Registrar el ActivityResultLauncher
+        // todo Revisar este código es posible que no esté permitido por el profesor
+        agregarPertenenciaLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if(result.getResultCode() == RESULT_OK){
+                        Intent datos = result.getData();
+                        if(datos != null){
+                            Pertenencia p = (Pertenencia) datos.getSerializableExtra("pertenencia");
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                (view, year, month, dayOfMonth) -> {
-            // Actualizo el TextView con la fecha elegida
-            String fecha = dayOfMonth+"/"+(month+1)+"/"+year;
-            tvFechSeleccionada.setText(fecha);
+                            listaPertenencias.add(p);
+                            adapter.notifyItemInserted(listaPertenencias.size() - 1);
+                        }
+                    }
+                }
+        );
 
-            /* Esto se podría usar para guardar la fecha en una variable
-            anio = year;
-            mes = month;
-            dia = dayOfMonth;*/
-
-        }, anio, mes, dia);
-        // Por último lo muestro:
-        datePickerDialog.show();
+        btnAniadir.setOnClickListener(v->{
+            Intent intent = new Intent(MainActivity.this, AddPertenencia.class);
+        });
     }
 }

@@ -12,4 +12,6 @@
     <string name="cbFragil">Fragile</string>
     <string name="btnEditar">Edit</string>
     <string name="btnEliminar">Delete</string>
+    <string name="btnAniadirPertenencia">Add item</string>
+
 </resources>
