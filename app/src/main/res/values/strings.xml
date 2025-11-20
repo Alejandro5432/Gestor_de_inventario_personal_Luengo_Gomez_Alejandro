@@ -12,5 +12,17 @@
     <string name="btnEditar">Editar</string>
     <string name="btnEliminar">Eliminar</string>
     <string name="btnAniadirPertenencia">Añadir Pertenencia</string>
+    <!-- AddPertenencia, se repiten los elementos pero los pongo por si acaso -->
+    <string name="etNombre">Nombre de la pertenencia</string>
+    <string name="etCategoria">Categoría</string>
+    <string name="etUnidades">Unidades</string>
+    <string name="etPeso">Peso por unidad (kg)</string>
+    <string name="etDimensiones">Dimensiones (ancho*alto*largo)</string>
+    <string name="checkBoxFragil">¿Es el objeto frágil?</string>
+    <string name="etValor">Valor por unidad (€) (opcional)</string>
+    <string name="btnFecha">Seleccionar fecha</string>
+    <string name="btnGuardar">Guardar</string>
+
+
 
 </resources>

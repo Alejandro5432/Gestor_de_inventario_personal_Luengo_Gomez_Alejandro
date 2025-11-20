@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnAniadir.setOnClickListener(v->{
             Intent intent = new Intent(MainActivity.this, AddPertenencia.class);
+            agregarPertenenciaLauncher.launch(intent);
         });
     }
 }

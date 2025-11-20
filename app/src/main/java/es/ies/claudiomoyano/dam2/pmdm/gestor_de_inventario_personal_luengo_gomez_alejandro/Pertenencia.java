@@ -1,7 +1,8 @@
 package es.ies.claudiomoyano.dam2.pmdm.gestor_de_inventario_personal_luengo_gomez_alejandro;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-public class Pertenencia {
+public class Pertenencia implements Serializable {
     private String nombrePertencia;
     private String categoria; // Electrónica, mueble, etc...
     private int unidades;

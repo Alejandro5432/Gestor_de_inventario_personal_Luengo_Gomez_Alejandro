@@ -40,11 +40,23 @@ public class PertenenciaAdapter extends RecyclerView.Adapter<PertenenciaAdapter.
         holder.textViewPeso.setText(String.valueOf(p.getPesoUnidad()));
         holder.textViewDimensiones.setText(p.getDimensiones());
         holder.checkBoxFragil.setChecked(p.isFragil());
-        holder.textViewPrecio.setText(String.valueOf(p.getValorUnidad()));
+
+        // Controlo posibles excepciones (valor era opcional)
+        if(p.getValorUnidad() > 0){
+            holder.textViewPrecio.setText(String.valueOf(p.getValorUnidad()));
+        }
+        else{
+            holder.textViewPrecio.setText("-");
+        }
 
         // Debo convertir en LocalDate a String para que funcione bien
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        holder.textViewFechaCompra.setText(p.getFechaCompra().format(formatter));
+        // Controlo las excepciones (fecha también era opcional)
+        if(p.getFechaCompra() != null){
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            holder.textViewFechaCompra.setText(p.getFechaCompra().format(formatter));
+        } else {
+            holder.textViewFechaCompra.setText("Sin fecha");
+        }
     }
 
     @Override

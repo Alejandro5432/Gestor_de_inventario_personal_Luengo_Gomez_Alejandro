@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:hint="@string/etNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"/>
+
+        <EditText
+            android:id="@+id/etCategoria"
+            android:hint="@string/etCategoria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"/>
+
+        <EditText
+            android:id="@+id/etUnidades"
+            android:hint="@string/etUnidades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"/>
+
+        <EditText
+            android:id="@+id/etPeso"
+            android:hint="@string/etPeso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"/>
+
+        <EditText
+            android:id="@+id/etDimensiones"
+            android:hint="@string/etDimensiones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"/>
+
+        <CheckBox
+            android:id="@+id/checkBoxFragil"
+            android:text="@string/checkBoxFragil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etValor"
+            android:hint="@string/etValor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"/>
+
+        <Button
+            android:id="@+id/btnFecha"
+            android:text="@string/btnFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:text="@string/btnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</ScrollView>

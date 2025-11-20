@@ -84,6 +84,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cbFragil"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:textSize="14sp"/>
         </LinearLayout>
 
@@ -111,8 +114,6 @@
                 android:height="48dp"
                 android:hint="@string/tvFechaSeleccionada"
                 android:textSize="14sp"
-                android:clickable="true"
-                android:focusable="true"
                 android:padding="4dp"/>
         </LinearLayout>
 
