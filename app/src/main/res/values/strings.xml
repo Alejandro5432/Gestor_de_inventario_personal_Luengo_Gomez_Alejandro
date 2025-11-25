@@ -11,7 +11,7 @@
     <string name="cbFragil">Frágil</string>
     <string name="btnEditar">Editar</string>
     <string name="btnEliminar">Eliminar</string>
-    <string name="btnAniadirPertenencia">Añadir Pertenencia</string>
+    <string name="fabAniadirPertenencia">Añadir Pertenencia</string>
     <!-- AddPertenencia, se repiten los elementos pero los pongo por si acaso -->
     <string name="etNombre">Nombre de la pertenencia</string>
     <string name="etCategoria">Categoría</string>
@@ -22,6 +22,8 @@
     <string name="etValor">Valor por unidad (€) (opcional)</string>
     <string name="btnFecha">Seleccionar fecha</string>
     <string name="btnGuardar">Guardar</string>
+
+    <string name="seleccionarFecha">Seleccionar fecha</string>
 
 
 

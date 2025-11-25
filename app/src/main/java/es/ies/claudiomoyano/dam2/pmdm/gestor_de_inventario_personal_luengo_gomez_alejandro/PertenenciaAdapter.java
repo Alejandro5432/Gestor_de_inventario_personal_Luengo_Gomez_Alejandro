@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -17,6 +17,17 @@ import java.util.List;
 public class PertenenciaAdapter extends RecyclerView.Adapter<PertenenciaAdapter.PertenenciaViewHolder> {
     private Context contexto;
     private List<Pertenencia> listaPertenencias;
+    private OnItemClickListener listener;
+
+    // Interfaz para los eventos de la tarjeta
+    public interface OnItemClickListener {
+        void onEditar(Pertenencia p, int position);
+        void onEliminar(Pertenencia p, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public PertenenciaAdapter(Context contexto, List<Pertenencia> listaPertenencias) {
         this.contexto = contexto;
@@ -34,6 +45,7 @@ public class PertenenciaAdapter extends RecyclerView.Adapter<PertenenciaAdapter.
     @Override
     public void onBindViewHolder(@NonNull PertenenciaViewHolder holder, int position) {
         Pertenencia p = this.listaPertenencias.get(position);
+
         holder.textViewNombre.setText(p.getNombrePertencia());
         holder.textViewCategoria.setText(p.getCategoria());
         holder.textViewUnidades.setText(String.valueOf(p.getUnidades()));
@@ -55,8 +67,17 @@ public class PertenenciaAdapter extends RecyclerView.Adapter<PertenenciaAdapter.
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             holder.textViewFechaCompra.setText(p.getFechaCompra().format(formatter));
         } else {
-            holder.textViewFechaCompra.setText("Sin fecha"); // todo poner el @string
+            holder.textViewFechaCompra.setText("Sin fecha");
         }
+
+        // Eventos de editar y eliminar
+        holder.btnEditar.setOnClickListener(v -> {
+            if (listener != null) listener.onEditar(p, holder.getAdapterPosition());
+        });
+
+        holder.btnEliminar.setOnClickListener(v -> {
+            if (listener != null) listener.onEliminar(p, holder.getAdapterPosition());
+        });
     }
 
     @Override
@@ -66,14 +87,9 @@ public class PertenenciaAdapter extends RecyclerView.Adapter<PertenenciaAdapter.
 
     public static class PertenenciaViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView textViewNombre;
-        public TextView textViewCategoria;
-        public TextView textViewUnidades;
-        public TextView textViewPeso;
-        public TextView textViewDimensiones;
-        public CheckBox checkBoxFragil;
-        public TextView textViewPrecio;
-        public TextView textViewFechaCompra;
+        public TextView textViewNombre, textViewCategoria, textViewUnidades, textViewPeso, textViewDimensiones, textViewPrecio, textViewFechaCompra;
+        CheckBox checkBoxFragil;
+        Button btnEditar, btnEliminar;
 
         public PertenenciaViewHolder(@NonNull View itemView){
             super(itemView);
@@ -83,9 +99,13 @@ public class PertenenciaAdapter extends RecyclerView.Adapter<PertenenciaAdapter.
             textViewUnidades = itemView.findViewById(R.id.tvUnidades);
             textViewPeso = itemView.findViewById(R.id.tvPesoUnidad);
             textViewDimensiones = itemView.findViewById(R.id.tvDimensiones);
-            checkBoxFragil = itemView.findViewById(R.id.cbFragil);
             textViewPrecio = itemView.findViewById(R.id.tvValorUnidad);
             textViewFechaCompra = itemView.findViewById(R.id.tvFechaSeleccionada);
+
+            checkBoxFragil = itemView.findViewById(R.id.cbFragil);
+
+            btnEditar = itemView.findViewById(R.id.btnEditar);
+            btnEliminar = itemView.findViewById(R.id.btnEliminar);
         }
     }
 }

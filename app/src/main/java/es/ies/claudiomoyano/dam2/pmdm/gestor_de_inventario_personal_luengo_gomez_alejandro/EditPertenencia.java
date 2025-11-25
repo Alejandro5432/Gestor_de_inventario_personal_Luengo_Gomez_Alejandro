@@ -16,10 +16,29 @@ public class EditPertenencia extends BasePertenencia {
         inicializarViews();
         inicializarDatePicker();
 
-        // Recupero los datos del MainActivity
+        // Recupero los datos enviados desde el MainActivity
         pertenenciaOriginal = (Pertenencia) getIntent().getSerializableExtra("pertenencia");
         posicion = getIntent().getIntExtra("posicion", -1);
 
+        // Relleno los campos con la pertenencia original, este if está para evitar crasheos
+        if(pertenenciaOriginal != null){
+            rellenarCampos(pertenenciaOriginal);
+        }
 
+        btnGuardar.setText("Guardar cambios");
+
+        btnGuardar.setOnClickListener(v-> {
+            if(!validarDatos()) return;
+
+            // Creo la pertenencia actualizada
+            Pertenencia pertenenciaEditada = crearDesdeSuClase();
+
+            // Y devuelvo los datos al MainActivity
+            Intent result = new Intent();
+            result.putExtra("pertenencia", pertenenciaEditada);
+            result.putExtra("posicion", posicion);
+            setResult(RESULT_OK, result);
+            finish();
+        });
     }
 }

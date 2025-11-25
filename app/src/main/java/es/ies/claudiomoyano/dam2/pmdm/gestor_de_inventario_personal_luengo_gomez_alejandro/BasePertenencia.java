@@ -1,13 +1,9 @@
 package es.ies.claudiomoyano.dam2.pmdm.gestor_de_inventario_personal_luengo_gomez_alejandro;
 
-// Es abstracta porque no se usa directamente, se hereda de ella. Inicialmente el código que aquí existe aparecía tanto en
-// EditPertenencia como en AddPertenencia, de manera que busqué una forma de dejar un código más limpio y esta clase es el resultado.
-
 import android.app.DatePickerDialog;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.time.LocalDate;
 import java.util.Calendar;
 
+// Es abstracta porque no se usa directamente, se hereda de ella. Inicialmente el código que aquí existe aparecía tanto en
+// EditPertenencia como en AddPertenencia, de manera que busqué una forma de dejar un código más limpio y esta clase es el resultado.
 public abstract class BasePertenencia extends AppCompatActivity {
 
     protected EditText etNombre, etCategoria, etUnidades, etPeso, etDimensiones, etValor;
@@ -80,13 +78,9 @@ public abstract class BasePertenencia extends AppCompatActivity {
 
         if(etDimensiones.getText().toString().isEmpty()){
             Toast.makeText(this, "Debe introducir las dimensiones de la pertenencia (largo x ancho x alto).", Toast.LENGTH_SHORT).show();
+            return false;
         }
         // NO hace falta validar si es frágil o no puesto que es siempre está marcada alguna de las opciones
-
-        double valor = 0;
-        if(!etValor.getText().toString().isEmpty()){
-            valor = Double.parseDouble(etValor.getText().toString());
-        }
         // NO hace falta validar la fecha o se pone una correcta, o no se pone, por lo que no hay que comprobar lo que elija el usuario.
         // Si está bien, retorna true
         return true;
@@ -101,7 +95,11 @@ public abstract class BasePertenencia extends AppCompatActivity {
         double peso = Double.parseDouble(etPeso.getText().toString());
         String dimensiones = etDimensiones.getText().toString();
         boolean fragil = cbFragil.isChecked();
-        double valor = Double.parseDouble(etValor.getText().toString());
+        // Compruebo si el valor de la pertenencia es distinto de 0 si no, se le asigna por defecto el valor 0
+        double valor = 0;
+        if(!etValor.getText().toString().isEmpty()){
+            valor = Double.parseDouble(etValor.getText().toString());
+        }
 
         if(valor == 0 && fechaSeleccionada == null){
             return new Pertenencia(nombre, categoria, unidades, peso, dimensiones, fragil);
@@ -116,6 +114,7 @@ public abstract class BasePertenencia extends AppCompatActivity {
 
     protected void rellenarCampos(Pertenencia p){
         if(p == null) return;
+
         etNombre.setText(p.getNombrePertencia());
         etCategoria.setText(p.getCategoria());
         etUnidades.setText(String.valueOf(p.getUnidades()));
@@ -132,7 +131,7 @@ public abstract class BasePertenencia extends AppCompatActivity {
         if (p.getFechaCompra() != null) {
             fechaSeleccionada = p.getFechaCompra();
             if (btnFecha != null) {
-                btnFecha.setText(String.format("Fecha: %02d/%02d/%04d",
+                btnFecha.setText(String.format("%02d/%02d/%04d",
                         fechaSeleccionada.getDayOfMonth(),
                         fechaSeleccionada.getMonthValue(),
                         fechaSeleccionada.getYear()));
