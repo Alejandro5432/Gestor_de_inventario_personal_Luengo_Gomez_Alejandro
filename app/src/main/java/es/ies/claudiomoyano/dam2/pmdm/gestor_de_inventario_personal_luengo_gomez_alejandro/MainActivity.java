@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         Button btnAniadir = findViewById(R.id.btnAniadirPertenencia);
 
         // Registrar el ActivityResultLauncher
-        // todo Revisar este código es posible que no esté permitido por el profesor
         agregarPertenenciaLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -59,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
+        // Un floating action button quizás es mejor
         btnAniadir.setOnClickListener(v->{
             Intent intent = new Intent(MainActivity.this, AddPertenencia.class);
             agregarPertenenciaLauncher.launch(intent);

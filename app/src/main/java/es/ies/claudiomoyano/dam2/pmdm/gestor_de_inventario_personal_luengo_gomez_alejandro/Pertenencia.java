@@ -31,7 +31,47 @@ public class Pertenencia implements Serializable {
     }
 
     /**
-     * Segundo constructor de la clase Pertenencia que inicaliza todas sus propiedades.
+     * Segundo constructor de la clase Pertenencia que inicaliza todas sus propiedades excepto .
+     * @param nombrePertencia Nombre del bien en concreto.
+     * @param categoria El tipo del objeto.
+     * @param unidades La cantidad dispuesta de este recurso.
+     * @param pesoUnidad La masa de cada individuo.
+     * @param dimensiones Tamaño aproximado del enser.
+     * @param fragil Si la pertenencia en cuestión debe manejarse con cautela.
+     * @param valorUnidad El precio de la propiedad.
+     */
+    public Pertenencia(String nombrePertencia, String categoria, int unidades, double pesoUnidad, String dimensiones, boolean fragil, double valorUnidad) {
+        this.nombrePertencia = nombrePertencia;
+        this.categoria = categoria;
+        this.unidades = unidades;
+        this.pesoUnidad = pesoUnidad;
+        this.dimensiones = dimensiones;
+        this.fragil = fragil;
+        this.valorUnidad = valorUnidad;
+    }
+
+    /**
+     * Tercer constructor de la clase Pertenencia que inicaliza todas sus propiedades excepto el valor por unidad de la pertenencia.
+     * @param nombrePertencia Nombre del bien en concreto.
+     * @param categoria El tipo del objeto.
+     * @param unidades La cantidad dispuesta de este recurso.
+     * @param pesoUnidad La masa de cada individuo.
+     * @param dimensiones Tamaño aproximado del enser.
+     * @param fragil Si la pertenencia en cuestión debe manejarse con cautela.
+     * @param fechaCompra El momento en el que el bien fue procurado.
+     */
+    public Pertenencia(String nombrePertencia, String categoria, int unidades, double pesoUnidad, String dimensiones, boolean fragil, LocalDate fechaCompra) {
+        this.nombrePertencia = nombrePertencia;
+        this.categoria = categoria;
+        this.unidades = unidades;
+        this.pesoUnidad = pesoUnidad;
+        this.dimensiones = dimensiones;
+        this.fragil = fragil;
+        this.fechaCompra = fechaCompra;
+    }
+
+    /**
+     * Cuarto constructor de la clase Pertenencia que inicaliza todas sus propiedades.
      * @param nombrePertencia Nombre del bien en concreto.
      * @param categoria El tipo del objeto.
      * @param unidades La cantidad dispuesta de este recurso.
