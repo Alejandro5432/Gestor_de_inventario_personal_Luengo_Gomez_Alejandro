@@ -23,6 +23,5 @@
 
         <activity android:name=".AddPertenencia" />
         <activity android:name=".EditPertenencia" />
-
     </application>
 </manifest>
