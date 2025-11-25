@@ -12,40 +12,42 @@
         <EditText
             android:id="@+id/etNombre"
             android:hint="@string/etNombre"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"/>
 
         <EditText
             android:id="@+id/etCategoria"
             android:hint="@string/etCategoria"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"/>
 
         <EditText
             android:id="@+id/etUnidades"
             android:hint="@string/etUnidades"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:minHeight="48dp"/>
 
         <EditText
             android:id="@+id/etPeso"
             android:hint="@string/etPeso"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
             android:minHeight="48dp"/>
 
         <EditText
             android:id="@+id/etDimensiones"
             android:hint="@string/etDimensiones"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"/>
 
         <CheckBox
-            android:id="@+id/checkBoxFragil"
+            android:id="@+id/cbFragil"
             android:text="@string/checkBoxFragil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -53,8 +55,9 @@
         <EditText
             android:id="@+id/etValor"
             android:hint="@string/etValor"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
             android:minHeight="48dp"/>
 
         <Button

@@ -12,7 +12,7 @@
     <string name="cbFragil">Fragile</string>
     <string name="btnEditar">Edit</string>
     <string name="btnEliminar">Delete</string>
-    <string name="btnAniadirPertenencia">Add item</string>
+    <string name="fabAniadirPertenencia">Add item</string>
     <!-- AddPertenencia, the elements are repeated, I put them here again in case there goes something wrong -->
     <string name="etNombre">Name of the object Nombre de la pertenencia</string>
     <string name="etCategoria">Category of the item</string>
