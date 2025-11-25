@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,7 +42,7 @@ public class AddPertenencia extends AppCompatActivity {
         btnGuardar.setOnClickListener(v-> guardarPertenencia());
     }
 
-    private void mostrarDatePicker(){
+    public void mostrarDatePicker(){
         Calendar c = Calendar.getInstance();
         int anio = c.get(Calendar.YEAR);
         int mes = c.get(Calendar.MONTH);
@@ -60,7 +59,6 @@ public class AddPertenencia extends AppCompatActivity {
         dialog.show();
     }
 
-
     private void guardarPertenencia(){
         // Validaciones de los datos
         if(etNombre.getText().toString().isEmpty()){
@@ -76,7 +74,7 @@ public class AddPertenencia extends AppCompatActivity {
         }
 
         if(etPeso.getText().toString().isEmpty()){
-            Toast.makeText(this, "Introduzcal el peso de la pertenencia (por unidad y en kg o lb)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Introduzca el peso de la pertenencia (por unidad y en kg o lb)", Toast.LENGTH_SHORT).show();
         }
 
         // Una vez comprobados los datos, los obtengo y los devuelvo al MainActivity con un Intent
@@ -98,7 +96,6 @@ public class AddPertenencia extends AppCompatActivity {
         Pertenencia p;
 
         // Si no se ha seleccionado fecha y valor uso el constructor simple
-        // todo Los constructores con uno de los dos y ajustar esto
         if(valor == 0 || fechaSeleccionada == null){
             p = new Pertenencia(nombre, categoria, unidades, peso, dimensiones, fragil);
         }else {

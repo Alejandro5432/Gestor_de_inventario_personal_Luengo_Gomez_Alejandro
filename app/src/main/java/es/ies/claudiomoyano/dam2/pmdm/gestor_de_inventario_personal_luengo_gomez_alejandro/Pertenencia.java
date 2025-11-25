@@ -13,7 +13,7 @@ public class Pertenencia implements Serializable {
     private LocalDate fechaCompra; // Atributo opcional
 
     /**
-     * Constructor de la clase Pertenencia que inicializa todas las propiedades excepto las relacionadas con el precio o la fecha de su adquisición.
+     * Primer constructor de la clase Pertenencia que inicializa todas las propiedades excepto las relacionadas con el precio o la fecha de su adquisición.
      * @param nombrePertencia Nombre del bien en concreto.
      * @param categoria El tipo del objeto.
      * @param unidades La cantidad dispuesta de este recurso.
@@ -31,7 +31,7 @@ public class Pertenencia implements Serializable {
     }
 
     /**
-     * Constructor de la clase Pertenencia que inicaliza todas sus propiedades.
+     * Segundo constructor de la clase Pertenencia que inicaliza todas sus propiedades.
      * @param nombrePertencia Nombre del bien en concreto.
      * @param categoria El tipo del objeto.
      * @param unidades La cantidad dispuesta de este recurso.

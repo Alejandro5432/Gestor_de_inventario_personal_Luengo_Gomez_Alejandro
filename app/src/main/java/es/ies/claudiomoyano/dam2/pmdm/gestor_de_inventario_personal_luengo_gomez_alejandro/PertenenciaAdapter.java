@@ -55,7 +55,7 @@ public class PertenenciaAdapter extends RecyclerView.Adapter<PertenenciaAdapter.
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             holder.textViewFechaCompra.setText(p.getFechaCompra().format(formatter));
         } else {
-            holder.textViewFechaCompra.setText("Sin fecha");
+            holder.textViewFechaCompra.setText("Sin fecha"); // todo poner el @string
         }
     }
 
