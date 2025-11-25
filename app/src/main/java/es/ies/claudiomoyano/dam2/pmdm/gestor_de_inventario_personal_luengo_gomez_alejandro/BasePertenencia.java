@@ -4,6 +4,7 @@ package es.ies.claudiomoyano.dam2.pmdm.gestor_de_inventario_personal_luengo_gome
 // EditPertenencia como en AddPertenencia, de manera que busqué una forma de dejar un código más limpio y esta clase es el resultado.
 
 import android.app.DatePickerDialog;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,7 +19,7 @@ public abstract class BasePertenencia extends AppCompatActivity {
 
     protected EditText etNombre, etCategoria, etUnidades, etPeso, etDimensiones, etValor;
     protected CheckBox cbFragil;
-    protected TextView tvFecha;
+    protected Button btnFecha, btnGuardar;
     protected LocalDate fechaSeleccionada;
 
     // Las funciones son protected porque están pensadas para ser usadas en otra clase
@@ -30,11 +31,14 @@ public abstract class BasePertenencia extends AppCompatActivity {
         etDimensiones = findViewById(R.id.etDimensiones);
         etValor = findViewById(R.id.etValor);
         cbFragil = findViewById(R.id.cbFragil);
-        tvFecha = findViewById(R.id.tvFechaSeleccionada);
+        btnFecha = findViewById(R.id.btnFecha);
+        btnGuardar = findViewById(R.id.btnGuardar);
     }
 
     protected void inicializarDatePicker(){
-        tvFecha.setOnClickListener(v -> {
+        if (btnFecha == null) return;
+
+        btnFecha.setOnClickListener(v -> {
             final Calendar c = Calendar.getInstance();
             int anio = c.get(Calendar.YEAR);
             int mes = c.get(Calendar.MONTH);
@@ -44,7 +48,7 @@ public abstract class BasePertenencia extends AppCompatActivity {
                     this,
                     (view, year, month, dayOfMonth) -> {
                         fechaSeleccionada = LocalDate.of(year, month + 1, dayOfMonth);
-                        tvFecha.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                        btnFecha.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
                     },
                     anio, mes, dia
             );
@@ -107,6 +111,35 @@ public abstract class BasePertenencia extends AppCompatActivity {
             return new Pertenencia(nombre, categoria, unidades, peso, dimensiones, fragil, valor);
         } else{
             return new Pertenencia(nombre, categoria, unidades, peso, dimensiones, fragil, valor, fechaSeleccionada);
+        }
+    }
+
+    protected void rellenarCampos(Pertenencia p){
+        if(p == null) return;
+        etNombre.setText(p.getNombrePertencia());
+        etCategoria.setText(p.getCategoria());
+        etUnidades.setText(String.valueOf(p.getUnidades()));
+        etPeso.setText(String.valueOf(p.getPesoUnidad()));
+        etDimensiones.setText(p.getDimensiones());
+        cbFragil.setChecked(p.isFragil());
+
+        if (p.getValorUnidad() > 0) {
+            etValor.setText(String.valueOf(p.getValorUnidad()));
+        } else {
+            etValor.setText("");
+        }
+
+        if (p.getFechaCompra() != null) {
+            fechaSeleccionada = p.getFechaCompra();
+            if (btnFecha != null) {
+                btnFecha.setText(String.format("Fecha: %02d/%02d/%04d",
+                        fechaSeleccionada.getDayOfMonth(),
+                        fechaSeleccionada.getMonthValue(),
+                        fechaSeleccionada.getYear()));
+            }
+        } else {
+            if (btnFecha != null) btnFecha.setText("Seleccionar fecha");
+            fechaSeleccionada = null;
         }
     }
 }
