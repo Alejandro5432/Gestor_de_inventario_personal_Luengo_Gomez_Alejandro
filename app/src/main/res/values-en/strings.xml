@@ -14,7 +14,7 @@
     <string name="btnEliminar">Delete</string>
     <string name="fabAniadirPertenencia">Add item</string>
     <!-- AddPertenencia, the elements are repeated, I put them here again in case there goes something wrong -->
-    <string name="etNombre">Name of the object Nombre de la pertenencia</string>
+    <string name="etNombre">Name of the object</string>
     <string name="etCategoria">Category of the item</string>
     <string name="etUnidades">Number of items</string>
     <string name="etPeso">Weight per unit (kg or lb)</string>
@@ -23,5 +23,7 @@
     <string name="etValor">Cost per unit (€ or $) (optional)</string>
     <string name="btnFecha">Select the date of purchase</string>
     <string name="btnGuardar">Save item</string>
+
+    <string name="seleccionarFecha">Select a Date</string>
 
 </resources>
